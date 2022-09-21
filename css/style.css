@@ -1,0 +1,77 @@
+html,body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    padding-top: 1em;
+    text-align: center;
+    background-color: black;
+    background-size: cover;
+    background-repeat: space;
+  }
+
+
+
+
+  h1, h2 {
+
+    font-family: 'MedievalSharp';
+    color: white;
+    font-size: 38px
+  }
+
+  canvas {
+
+    background-color: #222;
+    background-image: url('../images/images-7.jpeg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  #container {
+  max-width: 60em;
+
+  background-color: lightgreen;
+  margin: 0 auto;
+  padding: 1em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: .25fr .5fr .25fr;
+  grid-template-columns: .25fr .5fr .25fr;
+  grid-template-areas: "top-left top-left top-right"
+                        "game game game"
+                        "btm-left btm-right btm-right";
+  }
+
+  #top-left, #top-right, #btm-left, #btm-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategrey;
+  }
+
+  #top-left {
+    grid-area: top-left;
+  }
+
+  #top-right {
+    grid-area: top-right;
+
+  }
+
+  main {
+    grid-area: game;
+  }
+
+
+  #btm-left {
+    grid-area: btm-left;
+
+  }
+
+  #btm-right {
+    grid-area: btm-right;
+
+  }
