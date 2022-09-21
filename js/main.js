@@ -101,50 +101,30 @@ class Baddragon {
     }
 }
 // fire class is used for fire balls that player dragon breathes
-class Fire {
+class Fire extends Pic{
     constructor(x, y, width, height) {
-        this.x = x
-        this.y = y
-
+        super(x, y, width, height)
         const image = new Image()
-
         image.src = './images/fi2.png'
-
         this.image = image
-        this.height = 30
-        this.width = 30
-        this.alive = true
-
     }
     render() {
-        // ctx.fillStyle = 'green'
-        // ctx.fillRect(this.x, this.y, this.width, this.height)
         ctx.drawImage(this.image, this.x, this.y)
-        // console.log(this.image)
     }
 }
 // food class is used for pieces of dragon fruit
-class Food {
-    constructor(x, y, width, height) {
-        this.x = x
-        this.y = y
+class Food extends Pic{
+        constructor(x, y, width, height) {
+            super(x, y, width, height)
+            const image = new Image()
+            image.src = './images/f2.png'
+            this.image = image
+        }
+        render() {
+            ctx.drawImage(this.image, this.x, this.y)
+        }
 
-        const image = new Image()
 
-        image.src = './images/f2.png'
-
-        this.image = image
-        this.height = 30
-        this.width = 30
-        this.alive = true
-
-    }
-    render() {
-        // ctx.fillStyle = 'green'
-        // ctx.fillRect(this.x, this.y, this.width, this.height)
-        ctx.drawImage(this.image, this.x, this.y)
-        // console.log(this.image)
-    }
 }
 // main player
 const dragon = new Pic(300, 150)
