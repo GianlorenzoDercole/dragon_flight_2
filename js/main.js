@@ -147,7 +147,7 @@ class Food {
     }
 }
 // main player
-const dragon = new Dragon(300, 150)
+const dragon = new Pic(300, 150)
 //fire balls
 const flames = new Fire(dragon.x, dragon.y)
 // flames.alive condition allows player to use fire ball if there is not already fire on screen
