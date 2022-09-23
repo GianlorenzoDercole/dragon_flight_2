@@ -17,7 +17,7 @@ message = document.querySelector('#btm-right')
 
 
 // crawler class is used for building finish line
-class Crawler {
+class FinishLine {
     constructor(x, y, color, width, height){
         this.x =x
         this.y = y
@@ -33,28 +33,6 @@ class Crawler {
     }
 }
 // dragon class is used for the player dragon
-class Dragon {
-    constructor(x, y, width, height) {
-        this.x = x
-        this.y = y
-
-        const image = new Image()
-
-        image.src = './images/d2.png'
-
-        this.image = image
-        this.height = 30
-        this.width = 30
-        this.alive = true
-
-    }
-    render() {
-        // ctx.fillStyle = 'green'
-        // ctx.fillRect(this.x, this.y, this.width, this.height)
-        ctx.drawImage(this.image, this.x, this.y)
-        // console.log(this.image)
-    }
-}
 class Pic {
     constructor(x, y, width, height, im) {
         this.x = x
@@ -78,26 +56,15 @@ class Pic {
     }
 }
 // bad dragon class is used for oncoming enemy dragons
-class Baddragon {
+class Baddragon extends Pic{
     constructor(x, y, width, height) {
-        this.x = x
-        this.y = y
-
+        super(x, y, width, height)
         const image = new Image()
-
         image.src = './images/bd2.png'
-
         this.image = image
-        this.height = 30
-        this.width = 30
-        this.alive = true
-
     }
     render() {
-        // ctx.fillStyle = 'green'
-        // ctx.fillRect(this.x, this.y, this.width, this.height)
         ctx.drawImage(this.image, this.x, this.y)
-        // console.log(this.image)
     }
 }
 // fire class is used for fire balls that player dragon breathes
@@ -135,7 +102,7 @@ flames.alive = false
 const pic = new Pic(100, 150)
 
 // finish line comes after all the dragons
-const finishLine = new Crawler((canvas.width + 11000), 0, 'white', 30, canvas.height )
+const finishLine = new FinishLine((canvas.width + 11000), 0, 'white', 30, canvas.height )
 // dragon array is used to store dragons which will later cross the screen
 const dragonArray = []
 
