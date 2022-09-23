@@ -225,6 +225,11 @@ function detectFire() {
             ){
                 dragonArray[i].alive = false
                 flames.alive = false
+                dragonArray.pop(dragonArray[i])
+                dragonArray.push(dragonArray[i])
+                dragonArray[i].x = canvas.width + 1000
+                dragonArray[i].alive = true
+
 
 
             }
@@ -361,8 +366,6 @@ function gameLoop(){
         finishLine.x = canvas.width + 11000
         finishLine.alive = true
         finishLine.render()
-
-
     })
 
 // allow keys for movement to work
