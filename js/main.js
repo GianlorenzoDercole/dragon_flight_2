@@ -16,7 +16,7 @@ message = document.querySelector('#btm-right')
 
 
 
-// crawler class is used for building finish line
+// FinishLine class is used for building finish line
 class FinishLine {
     constructor(x, y, color, width, height){
         this.x =x
@@ -37,16 +37,13 @@ class Pic {
     constructor(x, y, width, height, im) {
         this.x = x
         this.y = y
-
         const image = new Image()
         im = './images/d2.png'
         image.src = im
-
         this.image = image
         this.height = 30
         this.width = 30
         this.alive = true
-
     }
     render() {
         // ctx.fillStyle = 'green'
@@ -90,8 +87,6 @@ class Food extends Pic{
         render() {
             ctx.drawImage(this.image, this.x, this.y)
         }
-
-
 }
 // main player
 const dragon = new Pic(300, 150)
@@ -118,58 +113,12 @@ function dragons() {
 
     }
 
-function dragons2() {
-
-     for (let i = 0; i < 11; i++){
-
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 3000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 4000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-
-    }
-
-}
-function dragons3() {
-
-    for (let i = 0; i < 11; i++){
-
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 5000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 6000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-
-    }
-
-}
-function dragons4() {
-
-    for (let i = 0; i < 11; i++){
-
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 7000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 8000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-
-    }
-
-}
-function dragons5() {
-
-    for (let i = 0; i < 11; i++){
-
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 9000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-        dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 10000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-
-    }
-
-}
 // add all the dragons the dragon array
 dragons()
-// dragons2()
-// dragons3()
-// dragons4()
-// dragons5()
-
 // pieces of fruit starting at different coordinates
 const food = new Food(300,300)
 const food2 = new Food(1000 ,Math.floor(Math.random() * canvas.height))
 const food3 = new Food(1250, Math.floor(Math.random() * canvas.height))
-
 
 // controls for player dragon
 function movementHandler(e) {
@@ -378,10 +327,7 @@ function gameLoop(){
         flames.alive = false
     }
     detectFire()
-
-
 }
-
     // reset the game when player clickes on reset button
     message.addEventListener('click', e => {
         movementDisplay.innerText = "I'm hungry"
@@ -395,10 +341,6 @@ function gameLoop(){
             dragonArray[i].alive = false
             }
         dragons()
-        dragons2()
-        dragons3()
-        dragons4()
-        dragons5()
 
         dragon.x = 100
         dragon.y = 100
