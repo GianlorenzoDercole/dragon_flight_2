@@ -160,10 +160,10 @@ function dragons5() {
 }
 // add all the dragons the dragon array
 dragons()
-dragons2()
-dragons3()
-dragons4()
-dragons5()
+// dragons2()
+// dragons3()
+// dragons4()
+// dragons5()
 
 // pieces of fruit starting at different coordinates
 const food = new Food(300,300)
@@ -319,13 +319,20 @@ function gameLoop(){
     pic.render()
     // render dragons and move them across the screen
     for (let i = 0 ; i < dragonArray.length; i++){
-        if(dragon.alive == true && dragonArray[i].alive == true){
+        if(dragon.alive == true && dragonArray[i].alive == true ){
             dragonArray[i].render()
             dragonArray[i].x -= 10
         }
-
+        if(dragonArray[i].x < -30){
+            dragonArray.pop(dragonArray[i])
+            dragonArray.push(dragonArray[i])
+            dragonArray[i].x = canvas.width + 1000
+            // dragonArray[i].render()
+            // dragonArray[i].x -= 10
+        }
 
     }
+
     //render player dragon
     if (dragon.alive == true){
         dragon.render()
