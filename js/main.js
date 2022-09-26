@@ -131,6 +131,20 @@ function dragons() {
 // add all the dragons the dragon array
 dragons()
 
+let stars = []
+function bgnstars() {
+
+    for (let i = 0; i < 110; i++){
+
+        //dragonArray.push(badDragon = new Crawler(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
+        stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
+        stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )+ 1000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
+
+    }
+
+}
+bgnstars()
+
 // controls for player dragon
 function movementHandler(e) {
     const speed = 10
@@ -262,6 +276,24 @@ function gameLoop(){
     if( food.alive == true && dragon.alive == true) {
         food.render()
     }
+
+    // render stars and move them across the screen
+
+    for (let i = 0 ; i < stars.length; i++){
+
+        if(dragon.alive){
+
+
+            stars[i].x -= 2
+            stars[i].render()
+        }
+        if(stars[i].x < -30){
+            stars.pop(stars[i])
+            stars.push(stars[i])
+            stars[i].x = canvas.width + 1000
+        }
+    }
+
     // move food across the screen
     food.x -= 1
 
@@ -275,7 +307,7 @@ function gameLoop(){
     }
 
     food3.x -= 1
-    
+
     // render dragons and move them across the screen
     for (let i = 0 ; i < dragonArray.length; i++){
         if(dragon.alive == true && dragonArray[i].alive == true ){
