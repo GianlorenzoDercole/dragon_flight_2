@@ -62,6 +62,18 @@ class Baddragon extends Pic{
         ctx.drawImage(this.image, this.x, this.y)
     }
 }
+// star class used for moving stars
+class Star extends Pic{
+    constructor(x, y, width, height) {
+        super(x, y, width, height)
+        const image = new Image()
+        image.src = './images/s.png'
+        this.image = image
+    }
+    render() {
+        ctx.drawImage(this.image, this.x, this.y)
+    }
+}
 // fire class is used for fire balls that player dragon breathes
 class Fire extends Pic{
     constructor(x, y, width, height) {
@@ -96,7 +108,7 @@ flames.alive = false
 const food = new Food(300,300)
 const food2 = new Food(1000 ,Math.floor(Math.random() * canvas.height))
 const food3 = new Food(1250, Math.floor(Math.random() * canvas.height))
-// const pic = new Pic(100, 150)
+
 
 // finish line comes after all the dragons
 const finishLine = new FinishLine((canvas.width + 11000), 0, 'white', 30, canvas.height )
@@ -263,7 +275,7 @@ function gameLoop(){
     }
 
     food3.x -= 1
-    // pic.render()
+    
     // render dragons and move them across the screen
     for (let i = 0 ; i < dragonArray.length; i++){
         if(dragon.alive == true && dragonArray[i].alive == true ){
