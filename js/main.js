@@ -46,10 +46,8 @@ class Pic {
         this.alive = true
     }
     render() {
-        // ctx.fillStyle = 'green'
-        // ctx.fillRect(this.x, this.y, this.width, this.height)
         ctx.drawImage(this.image, this.x, this.y)
-        // console.log(this.image)
+
     }
 }
 // bad dragon class is used for oncoming enemy dragons
@@ -94,7 +92,11 @@ const dragon = new Pic(300, 150)
 const flames = new Fire(dragon.x, dragon.y)
 // flames.alive condition allows player to use fire ball if there is not already fire on screen
 flames.alive = false
-const pic = new Pic(100, 150)
+// pieces of fruit starting at different coordinates
+const food = new Food(300,300)
+const food2 = new Food(1000 ,Math.floor(Math.random() * canvas.height))
+const food3 = new Food(1250, Math.floor(Math.random() * canvas.height))
+// const pic = new Pic(100, 150)
 
 // finish line comes after all the dragons
 const finishLine = new FinishLine((canvas.width + 11000), 0, 'white', 30, canvas.height )
@@ -102,9 +104,10 @@ const finishLine = new FinishLine((canvas.width + 11000), 0, 'white', 30, canvas
 const dragonArray = []
 
 // the dragons functions add fleets of dragons the dragon array at different coordinates
+let numberOfDragons = 11
 function dragons() {
 
-        for (let i = 0; i < 11; i++){
+        for (let i = 0; i < numberOfDragons; i++){
 
              dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 1000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
              dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 2000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
@@ -115,10 +118,6 @@ function dragons() {
 
 // add all the dragons the dragon array
 dragons()
-// pieces of fruit starting at different coordinates
-const food = new Food(300,300)
-const food2 = new Food(1000 ,Math.floor(Math.random() * canvas.height))
-const food3 = new Food(1250, Math.floor(Math.random() * canvas.height))
 
 // controls for player dragon
 function movementHandler(e) {
@@ -148,7 +147,6 @@ function movementHandler(e) {
         break
     }
 }
-
 
 // food and finish line collision
 function detectcol() {
@@ -185,7 +183,6 @@ function detectcol() {
     }
 }
 
-
 // wall collision
 function wallCol() {
     if (dragon.y > canvas.height - 30 || dragon.y < 0 || dragon.x < 0 || dragon.x > canvas.width){
@@ -194,7 +191,6 @@ function wallCol() {
         score = 0
     }
 }
-
 // dragon collision
 function detectDragons() {
     for (let i = 0; i < dragonArray.length; i++){
@@ -212,13 +208,12 @@ function detectDragons() {
         }
 
     }
-
 }
 // fire collision
 function detectFire() {
     for (let i = 0; i < dragonArray.length; i++){
         if (flames.alive == true && dragonArray[i].alive == true){
-            if(flames.x + flames.width >= dragonArray[i].x &&
+            if(flames.x + flames.width -10 >= dragonArray[i].x &&
                 flames.x <= dragonArray[i].x + dragonArray[i].width&&
                 flames.y + flames.height >= dragonArray[i].y &&
                 flames.y <= dragonArray[i].y + dragonArray[i].height
@@ -229,8 +224,6 @@ function detectFire() {
                 dragonArray.push(dragonArray[i])
                 dragonArray[i].x = canvas.width + 1000
                 dragonArray[i].alive = true
-
-
 
             }
         }
@@ -270,7 +263,7 @@ function gameLoop(){
     }
 
     food3.x -= 1
-    pic.render()
+    // pic.render()
     // render dragons and move them across the screen
     for (let i = 0 ; i < dragonArray.length; i++){
         if(dragon.alive == true && dragonArray[i].alive == true ){
@@ -281,10 +274,7 @@ function gameLoop(){
             dragonArray.pop(dragonArray[i])
             dragonArray.push(dragonArray[i])
             dragonArray[i].x = canvas.width + 1000
-            // dragonArray[i].render()
-            // dragonArray[i].x -= 10
         }
-
     }
 
     //render player dragon
