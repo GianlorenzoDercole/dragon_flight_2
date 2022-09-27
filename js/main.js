@@ -131,10 +131,12 @@ function dragons() {
 // add all the dragons the dragon array
 dragons()
 
+// stars array is used to store stars which will later move across the screen
 let stars = []
+let numberOfStars = 110
 function bgnstars() {
 
-    for (let i = 0; i < 110; i++){
+    for (let i = 0; i < numberOfStars; i++){
 
         //dragonArray.push(badDragon = new Crawler(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
         stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
