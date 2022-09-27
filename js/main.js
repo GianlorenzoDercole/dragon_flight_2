@@ -32,7 +32,7 @@ class FinishLine {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-// dragon class is used for the player dragon
+// pic class is used for the player dragon and template for other classes
 class Pic {
     constructor(x, y, width, height, im) {
         this.x = x
@@ -109,7 +109,6 @@ const food = new Food(300,300)
 const food2 = new Food(1000 ,Math.floor(Math.random() * canvas.height))
 const food3 = new Food(1250, Math.floor(Math.random() * canvas.height))
 
-
 // finish line comes after all the dragons
 const finishLine = new FinishLine((canvas.width + 11000), 0, 'white', 30, canvas.height )
 // dragon array is used to store dragons which will later cross the screen
@@ -138,12 +137,9 @@ function bgnstars() {
 
     for (let i = 0; i < numberOfStars; i++){
 
-        //dragonArray.push(badDragon = new Crawler(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
         stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
         stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )+ 1000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-
     }
-
 }
 bgnstars()
 
@@ -274,7 +270,7 @@ function gameLoop(){
     // move finish line towards player
     finishLine.x -= 10
 
-    // render foode is game not over
+    // render foode if game not over
     if( food.alive == true && dragon.alive == true) {
         food.render()
     }
