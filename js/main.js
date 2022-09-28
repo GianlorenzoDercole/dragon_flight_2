@@ -105,7 +105,7 @@ const flames = new Fire(dragon.x, dragon.y)
 // flames.alive condition allows player to use fire ball if there is not already fire on screen
 flames.alive = false
 // pieces of fruit starting at different coordinates
-const food = new Food(300,300)
+const food = new Food(500, Math.floor(Math.random() * canvas.height))
 const food2 = new Food(1000 ,Math.floor(Math.random() * canvas.height))
 const food3 = new Food(1250, Math.floor(Math.random() * canvas.height))
 
