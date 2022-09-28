@@ -117,16 +117,11 @@ const dragonArray = []
 // the dragons functions add fleets of dragons the dragon array at different coordinates
 let numberOfDragons = 11
 function dragons() {
-
         for (let i = 0; i < numberOfDragons; i++){
-
              dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 1000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
              dragonArray.push(badDragon = new Baddragon(Math.floor(Math.random() * (canvas.width )+ 2000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
-
             }
-
     }
-
 // add all the dragons the dragon array
 dragons()
 
@@ -136,7 +131,6 @@ let numberOfStars = 110
 function bgnstars() {
 
     for (let i = 0; i < numberOfStars; i++){
-
         stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
         stars.push(badDragon = new Star(Math.floor(Math.random() * (canvas.width )+ 1000), Math.floor(Math.random() * canvas.height), 'green', 30, 30))
     }
@@ -167,14 +161,12 @@ function movementHandler(e) {
         flames.x = dragon.x
         flames.y = dragon.y
         }
-
         break
     }
 }
-
-// food and finish line collision
+// collision detection
 function detectcol() {
-
+    // detect food collision
     if(dragon.x + dragon.width >= food.x &&
         dragon.x <= food.x + food.width&&
         dragon.y + dragon.height >= food.y &&
@@ -201,22 +193,18 @@ function detectcol() {
         food3.alive = false
         movementDisplay.innerText = 'my favorite'
     }
+    // detect finish line collision
     if (dragon.x >finishLine.x && dragon.alive == true){
         movementDisplay.innerText = 'you win'
         dragon.alive = false
     }
-}
-
-// wall collision
-function wallCol() {
+    // detect wall collision
     if (dragon.y > canvas.height - 30 || dragon.y < 0 || dragon.x < 0 || dragon.x > canvas.width){
         dragon.alive = false
         movementDisplay.innerText = 'try again'
         score = 0
     }
-}
-// dragon collision
-function detectDragons() {
+    // detect bad dragon collision
     for (let i = 0; i < dragonArray.length; i++){
         if(dragonArray[i].alive == true){
             if(dragon.x + dragon.width >= dragonArray[i].x &&
@@ -232,9 +220,7 @@ function detectDragons() {
         }
 
     }
-}
-// fire collision
-function detectFire() {
+    // detect fire collision
     for (let i = 0; i < dragonArray.length; i++){
         if (flames.alive == true && dragonArray[i].alive == true){
             if(flames.x + flames.width -10 >= dragonArray[i].x &&
@@ -253,8 +239,8 @@ function detectFire() {
         }
 
     }
-
 }
+
 score = 0
 // logic for running the game
 function gameLoop(){
@@ -350,10 +336,9 @@ function gameLoop(){
         score = 300
     }
 
-    // collision detection for walls food an dragons
-    wallCol()
+    // collision detection for walls food fire and dragons
     detectcol()
-    detectDragons()
+
     // allow player to use fire ball if fire not on screen
     if (flames.alive == true){
 
@@ -363,7 +348,7 @@ function gameLoop(){
     if (flames.x > canvas.width){
         flames.alive = false
     }
-    detectFire()
+
 }
     // reset the game when player clickes on reset button
     message.addEventListener('click', e => {
@@ -402,3 +387,6 @@ function gameLoop(){
 
 // allow keys for movement to work
 document.addEventListener('keydown', movementHandler)
+
+
+//////////////////////////////////////
