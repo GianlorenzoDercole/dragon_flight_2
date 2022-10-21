@@ -26,7 +26,7 @@ The game is built using html canvas.
 
 
 ![wireframe](./images/gamepicture.png)
-![wireframe](./images/fl.png)
+
 
 
 # MVP
